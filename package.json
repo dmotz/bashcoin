@@ -1,0 +1,15 @@
+{
+    "name": "bashcoin",
+    "homepage": "http://github.com/dmotz/bashcoin",
+    "author": {
+        "name": "Dan Motzenbecker",
+        "url": "http://github.com/dmotz"
+    },
+    "bin": { "bashcoin" : "./bashcoin.js" },
+    "repository": { "type" : "git", "url" : "http://github.com/dmotz/bashcoin.git" },
+    "description": "Bitcoin market stats from the command line.",
+    "keywords": ["bitcoin"],
+    "version": "0.0.1",
+    "preferGlobal" : "true",
+    "main": "./bashcoin.js"
+}
