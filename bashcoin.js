@@ -11,7 +11,8 @@
 
 var https = require('https'),
     bashcoin = require('commander');
-    
+
+
 bashcoin
     .version('0.0.1')
     .option('-c --cont', 'run continuously')
@@ -25,29 +26,34 @@ bashcoin
     .option('-l, --last', 'output last')
     .parse(process.argv);
 
-https.get({
-        host : 'mtgox.com',
-        path : '/api/0/data/ticker.php'
-    }, 
-    function(res){
+
+var reqOptions = {
+    host : 'mtgox.com',
+    path : '/api/0/data/ticker.php',
+    port : 443,
+    headers : { 'User-Agent' : 'bashcoin' }
+}
+
+var req = https.get(reqOptions, function(res){
         var data = '';
         res.on('data', function(chunk){
-            console.log(chunk);
             data += chunk;
         });
         res.on('end', function(){
             try{
                 var stats = JSON.parse(data);
+                console.log(stats);
             }catch(e){
-                outputError();
+                outputError(e);
                 return;
-            }            
+            }           
         });
     }
 ).on('error', function(e) {
-    outputError();
-});
+    outputError(e);
+}).end();
 
-function outputError(){
-    console.log(' \x1b[31msomething went wrong accessing the stats. Try again later?\x1b[0m\n');
+function outputError(e){
+    console.log(e);
+    console.log(' \x1b[31msomething went wrong accessing the stats.\x1b[0m\n');
 }
