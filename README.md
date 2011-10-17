@@ -2,7 +2,15 @@
 
 Quick Bitcoin market stats from the command line.
 
-### Default:
+Requires node.js and npm.
+
+### Installation:
+
+```
+$ npm install -g bashcoin
+```
+
+### Default Usage:
 
 ```
 $ bashcoin
