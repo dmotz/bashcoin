@@ -12,20 +12,17 @@
 var https = require('https'),
     bashcoin = require('commander');
 
-
 bashcoin
-    .version('0.0.1')
-    .option('-c --cont', 'run continuously')
+    .version('0.0.2')
     .option('-b, --buy', 'output buy')
     .option('-s, --sell', 'output sell')
-    .option('-h, --high', 'output high')
+    .option('-i, --high', 'output high')
     .option('-l, --low', 'output low')
     .option('-a, --avg, --average', 'output average')
-    .option('-v, --vol', 'output volume')
+    .option('-o, --vol', 'output volume')
     .option('-p, --vwap', 'output volume-weighted average price')
-    .option('-l, --last', 'output last')
+    .option('-t, --last', 'output last')
     .parse(process.argv);
-
 
 var reqOptions = {
     host : 'mtgox.com',
@@ -42,7 +39,7 @@ var req = https.get(reqOptions, function(res){
         res.on('end', function(){
             try{
                 var stats = JSON.parse(data);
-                console.log(stats);
+                handleStats(stats);
             }catch(e){
                 outputError(e);
                 return;
@@ -53,7 +50,26 @@ var req = https.get(reqOptions, function(res){
     outputError(e);
 }).end();
 
+function handleStats(obj){
+    var ticker = obj.ticker;
+    console.log('');
+    if(process.argv.length < 3){
+        bashcoin.buy  = true;
+        bashcoin.sell = true;
+        bashcoin.high = true;
+        bashcoin.low  = true;
+    }
+    bashcoin.buy  &&  console.log(' buy    ' + ticker.buy);
+    bashcoin.sell &&  console.log(' sell   ' + ticker.sell);
+    bashcoin.high &&  console.log(' high   ' + ticker.high);
+    bashcoin.low  &&  console.log(' low    ' + ticker.low);
+    bashcoin.avg  &&  console.log(' avg    ' + ticker.avg);
+    bashcoin.vol  &&  console.log(' vol    ' + ticker.vol);
+    bashcoin.vwap &&  console.log(' vwap   ' + ticker.vwap);
+    bashcoin.last &&  console.log(' last   ' + ticker.last);
+}
+
 function outputError(e){
-    console.log(e);
-    console.log(' \x1b[31msomething went wrong accessing the stats.\x1b[0m\n');
+    console.error(e);
+    console.error(' \x1b[31msomething went wrong accessing the stats.\x1b[0m\n');
 }
