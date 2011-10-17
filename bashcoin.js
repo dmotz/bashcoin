@@ -13,7 +13,7 @@ var https = require('https'),
     bashcoin = require('commander');
 
 bashcoin
-    .version('0.0.2')
+    .version('0.0.3')
     .option('-b, --buy', 'output buy')
     .option('-s, --sell', 'output sell')
     .option('-i, --high', 'output high')
