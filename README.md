@@ -2,6 +2,8 @@
 
 Quick Bitcoin market stats from the command line.
 
+Trade data from Mt. Gox.
+
 Requires node.js and npm.
 
 ### Installation:
