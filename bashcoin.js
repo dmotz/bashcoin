@@ -46,7 +46,7 @@ var req = https.get(reqOptions, function(res){
             }           
         });
     }
-).on('error', function(e) {
+).on('error', function(e){
     outputError(e);
 }).end();
 
@@ -60,7 +60,6 @@ function handleStats(obj){
         bashcoin.low  = true;
     }
     var terms = ['buy', 'sell', 'high', 'low', 'avg', 'vol', 'vwap', 'last'];
-    
     for(var i = 0, len = terms.length; i < len; i++){
         var term = terms[i],
             pad  = term.length === 3 ? '    ' : '   ';
