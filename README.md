@@ -1,6 +1,6 @@
 # bashcoin
 
-Quick Bitcoin market stats from the command line.
+Realtime Bitcoin market stats from the command line.
 
 Trade data from Mt. Gox.
 
