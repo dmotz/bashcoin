@@ -59,14 +59,13 @@ function handleStats(obj){
         bashcoin.high = true;
         bashcoin.low  = true;
     }
-    bashcoin.buy  &&  console.log(' buy    ' + ticker.buy);
-    bashcoin.sell &&  console.log(' sell   ' + ticker.sell);
-    bashcoin.high &&  console.log(' high   ' + ticker.high);
-    bashcoin.low  &&  console.log(' low    ' + ticker.low);
-    bashcoin.avg  &&  console.log(' avg    ' + ticker.avg);
-    bashcoin.vol  &&  console.log(' vol    ' + ticker.vol);
-    bashcoin.vwap &&  console.log(' vwap   ' + ticker.vwap);
-    bashcoin.last &&  console.log(' last   ' + ticker.last);
+    var terms = ['buy', 'sell', 'high', 'low', 'avg', 'vol', 'vwap', 'last'];
+    
+    for(var i = 0, len = terms.length; i < len; i++){
+        var term = terms[i],
+            pad  = term.length === 3 ? '    ' : '   ';
+        bashcoin[term] && console.log(' ' + term + pad + ticker[term]);
+    }
 }
 
 function outputError(e){
