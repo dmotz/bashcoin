@@ -1,8 +1,9 @@
 # bashcoin
 
-### Quick Bitcoin market stats from the command line.
+Quick Bitcoin market stats from the command line.
 
-Default:
+### Default:
+
 ```
 $ bashcoin
  
@@ -10,10 +11,11 @@ $ bashcoin
  sell   3.71998
  high   3.8975
  low    3.4
-
+ 
 ```
 
-Options:
+### Options:
+
 ```
 Usage: bashcoin.js [options]
 
@@ -29,5 +31,6 @@ Options:
   -o, --vol             output volume
   -p, --vwap            output volume-weighted average price
   -t, --last            output last
+
 ```
 
