@@ -10,10 +10,12 @@
  */
 
 var https = require('https'),
-    bashcoin = require('commander');
+    bashcoin = require('commander'),
+    req = false;
 
 bashcoin
-    .version('0.0.3')
+    .version('0.0.4')
+    .option('-c, --cont', 'run continuously, query every 30 seconds')
     .option('-b, --buy', 'output buy')
     .option('-s, --sell', 'output sell')
     .option('-i, --high', 'output high')
@@ -31,33 +33,40 @@ var reqOptions = {
     headers : { 'User-Agent' : 'bashcoin' }
 }
 
-var req = https.get(reqOptions, function(res){
-        var data = '';
-        res.on('data', function(chunk){
-            data += chunk;
-        });
-        res.on('end', function(){
-            try{
-                var stats = JSON.parse(data);
-                handleStats(stats);
-            }catch(e){
-                outputError(e);
-                return;
-            }           
-        });
-    }
-).on('error', function(e){
-    outputError(e);
-}).end();
+query();
+bashcoin.cont && setInterval(query, 30000);
+
+function query(){
+    req && req.abort();
+    req = https.get(reqOptions, function(res){
+            var data = '';
+            res.on('data', function(chunk){
+                data += chunk;
+            });
+            res.on('end', function(){
+                try{
+                    var stats = JSON.parse(data);
+                    handleStats(stats);
+                }catch(e){
+                    outputError(e);
+                    return;
+                }           
+            });
+        }
+    ).on('error', function(e){
+        outputError(e);
+    }).end();
+}
 
 function handleStats(obj){
     var ticker = obj.ticker;
     console.log('');
-    if(process.argv.length < 3){
-        bashcoin.buy  = true;
-        bashcoin.sell = true;
-        bashcoin.high = true;
-        bashcoin.low  = true;
+    if((!bashcoin.cont && process.argv.length < 3) || 
+        (bashcoin.cont && process.argv.length < 4)){
+            bashcoin.buy  = true;
+            bashcoin.sell = true;
+            bashcoin.high = true;
+            bashcoin.low  = true;
     }
     var terms = ['buy', 'sell', 'high', 'low', 'avg', 'vol', 'vwap', 'last'];
     for(var i = 0, len = terms.length; i < len; i++){
