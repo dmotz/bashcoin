@@ -33,6 +33,7 @@ Options:
 
   -h, --help            output usage information
   -v, --version         output the version number
+  -c, --cont            run continuously, query every 30 seconds
   -b, --buy             output buy
   -s, --sell            output sell
   -i, --high            output high
