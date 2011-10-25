@@ -14,10 +14,11 @@ var https = require('https'),
     req = false;
 
 bashcoin
-    .version('0.0.4')
+    .version('0.0.5')
     .option('-c, --cont', 'run continuously, query every 30 seconds')
     .option('-b, --buy', 'output buy')
     .option('-s, --sell', 'output sell')
+    .option('-r, --spread', 'output spread (rounded)')
     .option('-i, --high', 'output high')
     .option('-l, --low', 'output low')
     .option('-a, --avg, --average', 'output average')
@@ -74,6 +75,11 @@ function handleStats(obj){
             pad  = term.length === 3 ? '    ' : '   ';
         bashcoin[term] && console.log(' ' + term + pad + ticker[term]);
     }
+    if(bashcoin.spread){
+       var spread = Math.round((ticker.sell - ticker.buy) * 10000) / 10000;
+       console.log(' spread ' + spread);
+    }
+    console.log('');
 }
 
 function outputError(e){

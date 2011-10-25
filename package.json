@@ -9,7 +9,7 @@
     "repository": { "type" : "git", "url" : "http://github.com/dmotz/bashcoin.git" },
     "description": "Bitcoin market stats from the command line.",
     "keywords": ["bitcoin"],
-    "version": "0.0.4",
+    "version": "0.0.5",
     "preferGlobal": "true",
     "dependencies": { "commander" : ">= 0.2.0" },
     "main": "./bashcoin.js"
