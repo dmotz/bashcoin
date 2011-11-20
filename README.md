@@ -31,18 +31,18 @@ Usage: bashcoin.js [options]
 
 Options:
 
-    -h, --help            output usage information
-    -v, --version         output the version number
-    -c, --cont            run continuously, query every 30 seconds
-    -b, --buy             output buy
-    -s, --sell            output sell
-    -r, --spread          output spread (rounded)
-    -i, --high            output high
-    -l, --low             output low
-    -a, --avg, --average  output average
-    -o, --vol             output volume
-    -p, --vwap            output volume-weighted average price
-    -t, --last            output last
+  -h, --help            output usage information
+  -V, --version         output the version number
+  -c, --cont            run continuously, query every 30 seconds
+  -b, --buy             output buy
+  -s, --sell            output sell
+  -S, --spread          output spread (rounded)
+  -H, --high            output high
+  -L, --low             output low
+  -a, --avg, --average  output average
+  -V, --vol             output volume
+  -p, --vwap            output volume-weighted average price
+  -l, --last            output last
 
 ```
 
