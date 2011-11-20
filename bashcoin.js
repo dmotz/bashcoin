@@ -14,17 +14,17 @@ var https = require('https'),
     req = false;
 
 bashcoin
-    .version('0.0.5')
+    .version('0.0.6')
     .option('-c, --cont', 'run continuously, query every 30 seconds')
     .option('-b, --buy', 'output buy')
     .option('-s, --sell', 'output sell')
-    .option('-r, --spread', 'output spread (rounded)')
-    .option('-i, --high', 'output high')
-    .option('-l, --low', 'output low')
+    .option('-S, --spread', 'output spread (rounded)')
+    .option('-H, --high', 'output high')
+    .option('-L, --low', 'output low')
     .option('-a, --avg, --average', 'output average')
-    .option('-o, --vol', 'output volume')
+    .option('-V, --vol', 'output volume')
     .option('-p, --vwap', 'output volume-weighted average price')
-    .option('-t, --last', 'output last')
+    .option('-l, --last', 'output last')
     .parse(process.argv);
 
 var reqOptions = {
