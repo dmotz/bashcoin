@@ -43,6 +43,7 @@ Options:
   -v, --vol             output volume
   -p, --vwap            output volume-weighted average price
   -l, --last            output last
+  -A, --all             output all available stats
 
 ```
 
