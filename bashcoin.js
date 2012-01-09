@@ -14,7 +14,7 @@ var https = require('https'),
     req = false;
 
 bashcoin
-    .version('0.0.6')
+    .version('0.0.8')
     .option('-c, --cont', 'run continuously, query every 30 seconds')
     .option('-b, --buy', 'output buy')
     .option('-s, --sell', 'output sell')
@@ -25,6 +25,7 @@ bashcoin
     .option('-v, --vol', 'output volume')
     .option('-p, --vwap', 'output volume-weighted average price')
     .option('-l, --last', 'output last')
+    .option('-A, --all', 'output all available stats')
     .parse(process.argv);
 
 var reqOptions = {
@@ -49,8 +50,7 @@ function query(){
                     var stats = JSON.parse(data);
                     handleStats(stats);
                 }catch(e){
-                    outputError(e);
-                    return;
+                    return outputError(e);
                 }
             });
         }
@@ -62,8 +62,12 @@ function query(){
 function handleStats(obj){
     var ticker = obj.ticker;
     console.log('');
-    if((!bashcoin.cont && process.argv.length < 3) ||
-        (bashcoin.cont && process.argv.length < 4)){
+    if(!bashcoin.all &&
+        (
+            (!bashcoin.cont && process.argv.length < 3) ||
+            ( bashcoin.cont && process.argv.length < 4)
+        )
+    ){
             bashcoin.buy  = true;
             bashcoin.sell = true;
             bashcoin.high = true;
@@ -73,9 +77,9 @@ function handleStats(obj){
     for(var i = 0, len = terms.length; i < len; i++){
         var term = terms[i],
             pad  = term.length === 3 ? '    ' : '   ';
-        bashcoin[term] && console.log(' ' + term + pad + ticker[term]);
+        (bashcoin[term] || bashcoin.all) && console.log(' ' + term + pad + ticker[term]);
     }
-    if(bashcoin.spread){
+    if(bashcoin.spread || bashcoin.all){
        var spread = Math.round((ticker.sell - ticker.buy) * 10000) / 10000;
        console.log(' spread ' + spread);
     }
