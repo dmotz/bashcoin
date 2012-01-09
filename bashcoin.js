@@ -4,7 +4,7 @@
  * bashcoin
  * Bitcoin market stats from the command line
  * usage: $ bashcoin [stat]
- * uses Mt.Gox API 
+ * uses Mt.Gox API
  * Dan Motzenbecker
  * MIT License
  */
@@ -22,7 +22,7 @@ bashcoin
     .option('-H, --high', 'output high')
     .option('-L, --low', 'output low')
     .option('-a, --avg, --average', 'output average')
-    .option('-V, --vol', 'output volume')
+    .option('-v, --vol', 'output volume')
     .option('-p, --vwap', 'output volume-weighted average price')
     .option('-l, --last', 'output last')
     .parse(process.argv);
@@ -51,7 +51,7 @@ function query(){
                 }catch(e){
                     outputError(e);
                     return;
-                }           
+                }
             });
         }
     ).on('error', function(e){
@@ -62,7 +62,7 @@ function query(){
 function handleStats(obj){
     var ticker = obj.ticker;
     console.log('');
-    if((!bashcoin.cont && process.argv.length < 3) || 
+    if((!bashcoin.cont && process.argv.length < 3) ||
         (bashcoin.cont && process.argv.length < 4)){
             bashcoin.buy  = true;
             bashcoin.sell = true;
