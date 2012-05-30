@@ -14,14 +14,14 @@ var https = require('https'),
     req = false;
 
 bashcoin
-    .version('0.0.8')
+    .version('0.0.9')
     .option('-c, --cont', 'run continuously, query every 30 seconds')
     .option('-b, --buy', 'output buy')
     .option('-s, --sell', 'output sell')
     .option('-S, --spread', 'output spread (rounded)')
     .option('-H, --high', 'output high')
     .option('-L, --low', 'output low')
-    .option('-a, --avg, --average', 'output average')
+    .option('-a, --avg', 'output average')
     .option('-v, --vol', 'output volume')
     .option('-p, --vwap', 'output volume-weighted average price')
     .option('-l, --last', 'output last')
@@ -34,6 +34,8 @@ var reqOptions = {
     port : 443,
     headers : { 'User-Agent' : 'bashcoin' }
 }
+
+var terms = ['buy', 'sell', 'high', 'low', 'avg', 'vol', 'vwap', 'last'];
 
 query();
 bashcoin.cont && setInterval(query, 30000);
@@ -73,7 +75,6 @@ function handleStats(obj){
             bashcoin.high = true;
             bashcoin.low  = true;
     }
-    var terms = ['buy', 'sell', 'high', 'low', 'avg', 'vol', 'vwap', 'last'];
     for(var i = 0, len = terms.length; i < len; i++){
         var term = terms[i],
             pad  = term.length === 3 ? '    ' : '   ';
