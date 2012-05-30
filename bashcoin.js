@@ -90,4 +90,5 @@ function handleStats(obj){
 function outputError(e){
     console.error(e);
     console.error(' \x1b[31msomething went wrong accessing the stats.\x1b[0m\n');
+    process.exit(1);
 }
