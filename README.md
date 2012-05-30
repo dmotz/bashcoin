@@ -17,17 +17,17 @@ $ npm install -g bashcoin
 ```
 $ bashcoin
 
- buy    3.6815
- sell   3.71998
- high   3.8975
- low    3.4
+ buy    5.13502
+ sell   5.15
+ high   5.1725
+ low    5.1
 
 ```
 
 ### Options:
 
 ```
-Usage: bashcoin.js [options]
+Usage: bashcoin [options]
 
 Options:
 
@@ -39,7 +39,7 @@ Options:
   -S, --spread          output spread (rounded)
   -H, --high            output high
   -L, --low             output low
-  -a, --avg, --average  output average
+  -a, --avg             output average
   -v, --vol             output volume
   -p, --vwap            output volume-weighted average price
   -l, --last            output last
