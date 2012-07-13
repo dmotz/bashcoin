@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-/**
+/*
  * bashcoin
  * Bitcoin market stats from the command line
  * usage: $ bashcoin [stat]
@@ -16,7 +16,7 @@ var https = require('https'),
     history = null;
 
 bashcoin
-    .version('0.0.9')
+    .version('0.1')
     .option('-c, --cont', 'run continuously, query every 30 seconds')
     .option('-b, --buy', 'output buy')
     .option('-s, --sell', 'output sell')
