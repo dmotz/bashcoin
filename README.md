@@ -47,3 +47,30 @@ Options:
 
 ```
 
+Run bashcoin with `-c` to see a continuous output with delta percentages:
+
+```
+ buy    7.80999 +0%
+ sell   7.81 +0.11%
+ high   7.9 +0%
+ low    7.1 -0.44%
+
+```
+
+Try `bashcoin -Ac` to see all available stats outputted every 30 seconds:
+
+```
+ buy    7.47744 +0.366%
+ sell   7.54687 -0.70%
+ high   7.9 +0%
+ low    7.1 +0%
+ avg    7.570290517 +0.001%
+ vol    95907 +0.016%
+ vwap   7.510398611 +0.000%
+ last   7.54687 +1.283%
+ spread 0.0694 -116.1%
+
+```
+
+You can define a custom output interval in seconds with `-i`.
+
