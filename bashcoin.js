@@ -26,6 +26,7 @@ bashcoin
     .option('-p, --vwap', 'output volume-weighted average price')
     .option('-l, --last', 'output last')
     .option('-A, --all', 'output all available stats')
+    .option('-i, --interval [seconds]', 'custom interval for continuous output')
     .parse(process.argv);
 
 var reqOptions = {
@@ -38,7 +39,7 @@ var reqOptions = {
 var terms = ['buy', 'sell', 'high', 'low', 'avg', 'vol', 'vwap', 'last'];
 
 query();
-bashcoin.cont && setInterval(query, 30000);
+bashcoin.cont && setInterval(query, bashcoin.interval * 1000 || 30000);
 
 function query(){
     req && req.abort();
