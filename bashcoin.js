@@ -68,11 +68,7 @@ function getDelta(term){
     if(bashcoin.cont && history !== null){
         var delta = 100 - (history[term] / ticker[term] * 100);
 
-        if(isNaN(delta) || !isFinite(delta)){
-            delta = 0;
-        }
-
-        if(delta === 0){
+        if(delta === 0 || isNaN(delta) || !isFinite(delta)){
             return ' \x1b[33m+0%\x1b[0m';
         }
 
