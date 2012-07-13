@@ -13,7 +13,8 @@ var https = require('https'),
     bashcoin = require('commander'),
     req = false,
     ticker = null,
-    history = null;
+    history = null,
+    strikeouts = 0;
 
 bashcoin
     .version('0.1')
@@ -52,8 +53,7 @@ function query(){
             });
             res.on('end', function(){
                 try{
-                    var stats = JSON.parse(data);
-                    handleStats(stats);
+                    handleStats(JSON.parse(data));
                 }catch(e){
                     return outputError(e);
                 }
@@ -119,7 +119,7 @@ function handleStats(obj){
 }
 
 function outputError(e){
-    console.error(e);
+    strikeouts++;
     console.error(' \x1b[31msomething went wrong accessing the stats.\x1b[0m\n');
-    process.exit(1);
+    (!bashcoin.cont || (bashcoin.cont && strikeouts > 4)) && process.exit(1);
 }
