@@ -10,6 +10,7 @@
     "description": "Bitcoin market stats from the command line.",
     "keywords": ["bitcoin"],
     "version": "0.0.9",
+    "keywords": ["bitcoin", "cli", "terminal", "trading"],
     "preferGlobal": "true",
     "dependencies": { "commander" : "0.6.x" },
     "main": "./bashcoin.js"
