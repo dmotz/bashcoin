@@ -27,23 +27,24 @@ $ bashcoin
 ### Options:
 
 ```
-Usage: bashcoin [options]
-
-Options:
-
-  -h, --help            output usage information
-  -V, --version         output the version number
-  -c, --cont            run continuously, query every 30 seconds
-  -b, --buy             output buy
-  -s, --sell            output sell
-  -S, --spread          output spread (rounded)
-  -H, --high            output high
-  -L, --low             output low
-  -a, --avg             output average
-  -v, --vol             output volume
-  -p, --vwap            output volume-weighted average price
-  -l, --last            output last
-  -A, --all             output all available stats
+  Usage: bashcoin.js [options]
+  
+  Options:
+  
+    -h, --help                output usage information
+    -V, --version             output the version number
+    -c, --cont                run continuously, query every 30 seconds
+    -b, --buy                 output buy
+    -s, --sell                output sell
+    -S, --spread              output spread (rounded)
+    -H, --high                output high
+    -L, --low                 output low
+    -a, --avg                 output average
+    -v, --vol                 output volume
+    -p, --vwap                output volume-weighted average price
+    -l, --last                output last
+    -A, --all                 output all available stats
+    -i, --interval [seconds]  custom interval for continuous output
 
 ```
 
