@@ -11,7 +11,9 @@
 
 var https = require('https'),
     bashcoin = require('commander'),
-    req = false;
+    req = false,
+    ticker = null,
+    history = null;
 
 bashcoin
     .version('0.0.9')
@@ -88,7 +90,7 @@ function getDelta(term){
 }
 
 function handleStats(obj){
-    var ticker = obj.ticker;
+    ticker = obj.ticker;
     console.log('');
     if(!bashcoin.all &&
         (
@@ -101,15 +103,22 @@ function handleStats(obj){
             bashcoin.high = true;
             bashcoin.low  = true;
     }
+
     for(var i = 0, len = terms.length; i < len; i++){
         var term = terms[i],
             pad  = term.length === 3 ? '    ' : '   ';
-        (bashcoin[term] || bashcoin.all) && console.log(' ' + term + pad + ticker[term]);
+
+        if(bashcoin[term] || bashcoin.all){
+            console.log(' ' + term + pad + ticker[term] + getDelta(term));
+        }
     }
+
     if(bashcoin.spread || bashcoin.all){
-       var spread = Math.round((ticker.sell - ticker.buy) * 10000) / 10000;
-       console.log(' spread ' + spread);
+       ticker.spread = Math.round((ticker.sell - ticker.buy) * 10000) / 10000;
+       console.log(' spread ' + ticker.spread + getDelta('spread'));
     }
+
+    history = ticker;
     console.log('');
 }
 
