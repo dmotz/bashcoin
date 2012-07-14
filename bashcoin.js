@@ -9,6 +9,8 @@
  * MIT License
  */
 
+process.title = 'bashcoin';
+
 var https = require('https'),
     bashcoin = require('commander'),
     req = false,
