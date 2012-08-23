@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/dmotz/bashcoin.png)](http://travis-ci.org/dmotz/bashcoin)
 # bashcoin
 
 Realtime Bitcoin market stats from the command line.
