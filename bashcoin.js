@@ -68,15 +68,18 @@ function query(){
 
 function getDelta(term){
     if(bashcoin.cont && history !== null){
-        var delta = 100 - (history[term] / ticker[term] * 100);
+        var delta = 100 - (history[term].value / ticker[term].value * 100);
 
         if(delta === 0 || isNaN(delta) || !isFinite(delta)){
-            return ' \x1b[33m+0%\x1b[0m';
+            return '';
         }
 
-        delta = delta.toString().substring(0, 5);
+        delta = delta.toFixed(2);
+        if(delta === '0.00'){
+            return '';
+        }
 
-        if(delta >= 0){
+        if(parseFloat(delta, 10) > 0){
             return ' \x1b[32m+' + delta + '%\x1b[0m';
         }else{
             return ' \x1b[31m' + delta + '%\x1b[0m';
