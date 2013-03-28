@@ -91,7 +91,7 @@ function getDelta(term){
 }
 
 function handleStats(obj){
-    ticker = obj.ticker;
+    ticker = obj.data;
     console.log('');
     if(!bashcoin.all &&
         (
@@ -110,12 +110,12 @@ function handleStats(obj){
             pad  = term.length === 3 ? '    ' : '   ';
 
         if(bashcoin[term] || bashcoin.all){
-            console.log(' ' + term + pad + ticker[term] + getDelta(term));
+            console.log(' ' + term + pad + ticker[term].display + getDelta(term));
         }
     }
 
     if(bashcoin.spread || bashcoin.all){
-       ticker.spread = Math.round((ticker.sell - ticker.buy) * 10000) / 10000;
+       ticker.spread = '$' + (ticker.sell.value - ticker.buy.value).toFixed(2);
        console.log(' spread ' + ticker.spread + getDelta('spread'));
     }
 
