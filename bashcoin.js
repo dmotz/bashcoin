@@ -35,8 +35,8 @@ bashcoin
     .parse(process.argv);
 
 var reqOptions = {
-    host : 'mtgox.com',
-    path : '/api/0/data/ticker.php',
+    host : 'data.mtgox.com',
+    path : '/api/2/BTCUSD/money/ticker',
     port : 443,
     headers : { 'User-Agent' : 'bashcoin' }
 }
