@@ -17,10 +17,10 @@ $ npm install -g bashcoin
 ```
 $ bashcoin
 
- buy    5.13502
- sell   5.15
- high   5.1725
- low    5.1
+ buy    $5.13502
+ sell   $5.15
+ high   $5.1725
+ low    $5.1
 
 ```
 
@@ -51,25 +51,25 @@ $ bashcoin
 Run bashcoin with `-c` to see a continuous output with delta percentages:
 
 ```
- buy    7.80999 +0%
- sell   7.81 +0.11%
- high   7.9 +0%
- low    7.1 -0.44%
+ buy    $7.80999
+ sell   $7.81 +0.11%
+ high   $7.9
+ low    $7.1 -0.44%
 
 ```
 
 Try `bashcoin -Ac` to see all available stats outputted every 30 seconds:
 
 ```
- buy    7.47744 +0.366%
- sell   7.54687 -0.70%
- high   7.9 +0%
- low    7.1 +0%
- avg    7.570290517 +0.001%
- vol    95907 +0.016%
- vwap   7.510398611 +0.000%
- last   7.54687 +1.283%
- spread 0.0694 -116.1%
+ buy    $7.47744 +0.36%
+ sell   $7.54687 -0.70%
+ high   $7.9
+ low    $7.1
+ avg    $7.570290517
+ vol    95907 +0.01%
+ vwap   $7.510398611
+ last   $7.54687 +1.28%
+ spread $0.0694 -116.1%
 
 ```
 
