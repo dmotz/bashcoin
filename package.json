@@ -9,8 +9,8 @@
     "repository": { "type" : "git", "url" : "http://github.com/dmotz/bashcoin.git" },
     "description": "Bitcoin market stats from the command line.",
     "keywords": ["bitcoin", "cli", "terminal", "trading"],
-    "version": "0.1.0",
+    "version": "0.1.1",
     "preferGlobal": "true",
-    "dependencies": { "commander" : "0.6.x" },
+    "dependencies": { "commander" : "1.x.x" },
     "main": "./bashcoin.js"
 }
