@@ -9,12 +9,12 @@
  * MIT License
  */
 
-process.title = 'bashcoin';
-var https = require('https'),
-    bashcoin = require('commander'),
-    req = false,
-    ticker = null,
-    history = null,
+process.title  = 'bashcoin';
+var https      = require('https'),
+    bashcoin   = require('commander'),
+    req        = false,
+    ticker     = null,
+    history    = null,
     strikeouts = 0;
 
 bashcoin
@@ -34,10 +34,10 @@ bashcoin
   .parse(process.argv);
 
 var reqOptions = {
-  host : 'data.mtgox.com',
-  path : '/api/2/BTCUSD/money/ticker',
-  port : 443,
-  headers : {'User-Agent': 'bashcoin'}
+  host:    'data.mtgox.com',
+  path:    '/api/2/BTCUSD/money/ticker',
+  port:    443,
+  headers: {'User-Agent': 'bashcoin'}
 }
 
 var terms = ['buy', 'sell', 'high', 'low', 'avg', 'vol', 'vwap', 'last'];
@@ -48,8 +48,7 @@ var query = function(){
     var data = '';
     res.on('data', function(chunk) {
       data += chunk;
-    });
-    res.on('end', function() {
+    }).on('end', function() {
       try {
         handleStats(JSON.parse(data));
       } catch(e) {
@@ -97,24 +96,19 @@ var handleStats = function(obj) {
       ( bashcoin.cont && process.argv.length < 4)
     )
   ) {
-      bashcoin.buy  = true;
-      bashcoin.sell = true;
-      bashcoin.high = true;
-      bashcoin.low  = true;
+      bashcoin.buy = bashcoin.sell = bashcoin.high = bashcoin.low = true;
   }
 
   for (var i = 0, len = terms.length; i < len; i++) {
-    var term = terms[i],
-        pad  = term.length === 3 ? '    ' : '   ';
-
+    var term = terms[i];
     if (bashcoin[term] || bashcoin.all) {
-      console.log(' ' + term + pad + ticker[term].display + getDelta(term));
+      console.log(' ' + term + '\t' + ticker[term].display + getDelta(term));
     }
   }
 
   if (bashcoin.spread || bashcoin.all) {
     ticker.spread = '$' + (ticker.sell.value - ticker.buy.value).toFixed(2);
-    console.log(' spread ' + ticker.spread + getDelta('spread'));
+    console.log(' spread' + '\t' + ticker.spread + getDelta('spread'));
   }
 
   history = ticker;
