@@ -18,7 +18,7 @@ var https      = require('https'),
     strikeouts = 0;
 
 bashcoin
-  .version('0.1.1')
+  .version('0.1.2')
   .option('-c, --cont', 'run continuously, query every 30 seconds')
   .option('-b, --buy', 'output buy')
   .option('-s, --sell', 'output sell')
